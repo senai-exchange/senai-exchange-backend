@@ -1,6 +1,8 @@
 package com.senai.devs.senaiexchange.entity;
 
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -17,17 +19,16 @@ public class Post{
     private String content;
     @Column(nullable = false)
     private boolean status = false;
-    @Temporal(TemporalType.TIMESTAMP)
+    @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
     private Date published_at;
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private String created_at = "";
+    @Column(nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime created_at;
 
     public Post() {
 
     }
 
-    public Post(String title, String content, String created_at, Date published_at) {
+    public Post(String title, String content, LocalDateTime created_at, Date published_at) {
         this.title = title;
         this.content = content;
         this.created_at = created_at;
@@ -82,11 +83,11 @@ public class Post{
         this.published_at = published_at;
     }
 
-    public String getCreated_at() {
+    public LocalDateTime getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(String created_at) {
+    public void setCreated_at(LocalDateTime created_at) {
         this.created_at = created_at;
     }
 }
