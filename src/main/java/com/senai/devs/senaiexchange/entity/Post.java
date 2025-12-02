@@ -3,7 +3,7 @@ package com.senai.devs.senaiexchange.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "posts")
@@ -20,7 +20,7 @@ public class Post{
     @Column(nullable = false)
     private boolean status = false;
     @Column(columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
-    private Date published_at;
+    private LocalDateTime published_at;
     @Column(nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime created_at;
 
@@ -28,7 +28,7 @@ public class Post{
 
     }
 
-    public Post(String title, String content, LocalDateTime created_at, Date published_at) {
+    public Post(String title, String content, LocalDateTime created_at, LocalDateTime published_at) {
         this.title = title;
         this.content = content;
         this.created_at = created_at;
@@ -75,11 +75,11 @@ public class Post{
         this.status = status;
     }
 
-    public Date getPublished_at() {
+    public LocalDateTime getPublished_at() {
         return published_at;
     }
 
-    public void setPublished_at(Date published_at) {
+    public void setPublished_at(LocalDateTime published_at) {
         this.published_at = published_at;
     }
 
