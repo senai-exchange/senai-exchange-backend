@@ -1,11 +1,20 @@
 package com.senai.devs.senaiexchange.entity;
 
+import com.senai.devs.senaiexchange.entity.Post;
+import com.senai.devs.senaiexchange.entity.Comment;
+import com.senai.devs.senaiexchange.entity.Draft;
+import com.senai.devs.senaiexchange.entity.SearchHistory;
+
+import java.util.List;
+import java.util.ArrayList;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.persistence.OneToMany;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +30,19 @@ public class User {
 	private String display_name;
 	@Column(length = 512)
 	private String avatar_url;
+
+	// Forward keys
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user")
+	private List<Comment> comments = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user")
+	private List<Draft> drafts = new ArrayList<>();
+
+	@OneToMany(mappedBy = "user")
+	private List<SearchHistory> searchHistory = new ArrayList<>();
 
 	// Constructors
 	public User() {
