@@ -1,5 +1,7 @@
 package com.senai.devs.senaiexchange.entity;
 
+import com.senai.devs.senaiexchange.entity.User;
+
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -8,6 +10,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "comments")
@@ -24,6 +28,11 @@ public class Comment {
 	private String content;
 	@Column(nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime created_at;
+
+	// Forward key
+	@ManyToOne
+	@JoinColumn (name = "author_id")
+	private User user;
 
 	// Constructors
 	public Comment() {
