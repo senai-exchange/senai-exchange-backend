@@ -5,11 +5,11 @@ import com.senai.devs.senaiexchange.entity.Tag;
 public class TagResponse {
 
     private Long id;
-    private String nome;
+    private String name;
 
     public TagResponse(Tag tag) {
         this.id = tag.getId();
-        this.nome = tag.getNome();
+        this.name = tag.getName();
     }
 
     public Long getId() {
@@ -20,11 +20,11 @@ public class TagResponse {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/tarefa")
+@RequestMapping("/tag")
 public class TagController {
 
     private  final TagService tagService;
@@ -17,14 +17,14 @@ public class TagController {
     }
 
     @PostMapping
-    public ResponseEntity<TagResponse> criar(@RequestBody TagRequest dto) {
-        return ResponseEntity.ok(tagService.criarTag(dto));
+    public ResponseEntity<TagResponse> create(@RequestBody TagRequest dto) {
+        return ResponseEntity.ok(tagService.createTag(dto));
     }
 
     @GetMapping ("/{id}")
-    public ResponseEntity<?> buscar(@PathVariable long id) {
+    public ResponseEntity<?> search(@PathVariable long id) {
         try {
-            TagResponse tag = tagService.buscarPorId(id);
+            TagResponse tag = tagService.searchId(id);
             return ResponseEntity.ok(tag);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
@@ -32,9 +32,9 @@ public class TagController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> atualizar(@PathVariable long id, @RequestBody TagResponse dto) {
+    public ResponseEntity<?> update(@PathVariable long id, @RequestBody TagResponse dto) {
         try {
-            TagResponse tagAtualizada = tagService.atualizar(id, dto);
+            TagResponse tagAtualizada = tagService.update(id, dto);
             return ResponseEntity.ok(tagAtualizada);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
@@ -42,8 +42,8 @@ public class TagController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletar(@PathVariable long id) {
-        boolean deletado = tagService.deletar(id);
+    public ResponseEntity<?> delete(@PathVariable long id) {
+        boolean deletado = tagService.deleted(id);
 
         if (deletado) {
             return ResponseEntity.ok("Tag deletada com sucesso!");

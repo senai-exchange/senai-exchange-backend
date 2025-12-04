@@ -17,16 +17,16 @@ public class TagService {
         this.tagRepository = tagRepository;
     }
 
-    public TagResponse criarTag(TagRequest dto) {
+    public TagResponse createTag(TagRequest dto) {
         Tag tag = new Tag();
-        tag.setNome(dto.getNome());
+        tag.setName(dto.getName());
 
         tagRepository.save(tag);
 
         return new TagResponse(tag);
     }
 
-    public TagResponse buscarPorId(long id) {
+    public TagResponse searchId(long id) {
         Optional<Tag> tagOptional = tagRepository.findById(id);
 
         if (tagOptional.isEmpty()) {
@@ -37,7 +37,7 @@ public class TagService {
         return new TagResponse(tag);
     }
 
-    public TagResponse atualizar(long id, TagResponse dto) {
+    public TagResponse update(long id, TagResponse dto) {
         Optional<Tag> tagOptional = tagRepository.findById(id);
 
         if (tagOptional.isEmpty()) {
@@ -46,14 +46,14 @@ public class TagService {
 
         Tag tag = tagOptional.get();
 
-        tag.setNome(dto.getNome());
+        tag.setName(dto.getName());
 
         tagRepository.save(tag);
 
         return new TagResponse(tag);
     }
 
-    public boolean deletar(long id) {
+    public boolean deleted(long id) {
         if (!tagRepository.existsById(id)) {
             return false;
         }
