@@ -13,6 +13,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "comments")
 public class Comment {
@@ -31,6 +34,7 @@ public class Comment {
 	// Foreign key
 	@ManyToOne
 	@JoinColumn (name = "author_id")
+	@OnDelete (action = OnDeleteAction.SET_NULL)
 	private User user;
 
 	// Constructors
