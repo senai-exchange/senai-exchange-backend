@@ -23,7 +23,6 @@ public class Comment {
 	private int id;
 	@Column(nullable = false)
 	private int post_id;
-	private int author_id;
 	@Column(nullable = false, columnDefinition = "TEXT")
 	private String content;
 	@Column(nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
@@ -38,9 +37,8 @@ public class Comment {
 	public Comment() {
 	}
 
-	public Comment(int post_id, int author_id, String content, LocalDateTime created_at) {
+	public Comment(int post_id, String content, LocalDateTime created_at) {
 		this.post_id = post_id;
-		this.author_id = author_id;
 		this.content = content;
 		this.created_at = created_at;
 	}
@@ -52,10 +50,6 @@ public class Comment {
 
 	public int getPost_id() {
 		return post_id;
-	}
-
-	public int getAuthor_id() {
-		return author_id;
 	}
 
 	public String getContent() {
@@ -73,10 +67,6 @@ public class Comment {
 
 	public void setPost_id(int post_id) {
 		this.post_id = post_id;
-	}
-
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
 	}
 
 	public void setContent(String content) {
