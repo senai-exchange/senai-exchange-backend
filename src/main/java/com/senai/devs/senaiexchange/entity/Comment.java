@@ -29,7 +29,7 @@ public class Comment {
 	@Column(nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime created_at;
 
-	// Forward key
+	// Foreign key
 	@ManyToOne
 	@JoinColumn (name = "author_id")
 	private User user;
