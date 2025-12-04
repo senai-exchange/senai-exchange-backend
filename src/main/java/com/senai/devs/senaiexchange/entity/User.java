@@ -31,7 +31,7 @@ public class User {
 	@Column(length = 512)
 	private String avatar_url;
 
-	// Forward keys
+	// Foreign keys
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts = new ArrayList<>();
 
