@@ -1,3 +1,4 @@
+
 package com.senai.devs.senaiexchange.entity;
 
 import jakarta.persistence.*;
@@ -77,9 +78,5 @@ public class Draft{
 	};
 	
 	
-	
-	
-	
-	
-	
+
 }
