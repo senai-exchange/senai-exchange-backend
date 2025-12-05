@@ -1,9 +1,12 @@
 package com.senai.devs.senaiexchange.entity;
+import com.senai.devs.senaiexchange.entity.Draft;
+import java.util.Set;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Tag {
@@ -12,6 +15,9 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    
+    @ManyToMany(mappedBy = "tags")
+    private Set<Draft> drafts;
 
     public Tag (){
 
