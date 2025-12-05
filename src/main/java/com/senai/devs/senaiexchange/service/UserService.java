@@ -44,4 +44,16 @@ public class UserService {
 		return Optional.of(userResponse);
 	}
 
+	// Delete user by username
+	public String deleteUser(String username) {
+		User user = userRepository.findByUsername(username);
+		if (user != null) {
+			userRepository.deleteById(user.getId());
+			return String.format("Usuário @%s excluído com sucesso!",
+				user.getUsername());
+		} else {
+			return "Esse usuário não existe!";
+		}
+	}
+
 }

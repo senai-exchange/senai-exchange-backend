@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping ("/users")
@@ -33,6 +36,12 @@ public class UserController {
 	@GetMapping (value = "/{username}")
 	public Optional<UserResponse> listUserByUsername(@PathVariable String username) {
 		return userService.listUserByUsername(username);
+	}
+
+	@DeleteMapping (value = "/delete/{username}")
+	public ResponseEntity<?> deleteUser(@PathVariable String username) {
+		return ResponseEntity.status(HttpStatus.ACCEPTED).
+			body(userService.deleteUser(username));
 	}
 
 }
