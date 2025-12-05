@@ -1,5 +1,6 @@
 package com.senai.devs.senaiexchange.dto.response;
 
+import com.senai.devs.senaiexchange.entity.Draft;
 
 public class DraftResponseResume {
 
@@ -7,10 +8,10 @@ public class DraftResponseResume {
     private int authorId;
     private String title;
 
-    public DraftResponseResume(int id, int authorId, String title) {
-        this.id = id;
-        this.authorId = authorId;
-        this.title = title;
+    public DraftResponseResume(Draft draft) {
+        this.id = draft.getId();
+        this.authorId = draft.getAuthorId();
+        this.title = draft.getTitle();
     }
 
     public int getId() {

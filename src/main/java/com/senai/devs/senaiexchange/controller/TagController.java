@@ -16,7 +16,7 @@ public class TagController {
         this.tagService = tagService;
     }
 
-    @PostMapping
+    @PostMapping("create")
     public ResponseEntity<TagResponse> create(@RequestBody TagRequest dto) {
         return ResponseEntity.ok(tagService.createTag(dto));
     }

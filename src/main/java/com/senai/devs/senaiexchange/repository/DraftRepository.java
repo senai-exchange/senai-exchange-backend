@@ -11,7 +11,7 @@ import com.senai.devs.senaiexchange.entity.Draft;
 public interface DraftRepository extends JpaRepository<Draft, Integer>{
 
 	List<Draft> findByTitleContainingIgnoreCase(String title);
-//	List<Draft> findByAuthorIdAndTagName(int authorId, String tagName);
+	List<Draft> findByAuthorIdAndTag_Name(int authorId, String name);
 	List<Draft> findAllByAuthorId(int authorId);
 	List<Draft> findByAuthorId(int authorId);
 	}

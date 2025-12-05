@@ -23,17 +23,11 @@ public class DraftService {
     
     // CREATE
     public DraftResponse create(DraftRequest draftRequest) {
-        Draft draft = new Draft(
-            draftRequest.getAuthorId(),
-            draftRequest.getPostId(),
-            draftRequest.getTitle(),
-            draftRequest.getContent_text(),
-            draftRequest.getIs_autosave()
-        );
-        
+        Draft draft = new Draft(draftRequest);
         Draft savedDraft = draftRepository.save(draft);
         return new DraftResponse(savedDraft);
     }
+
     
     // DELETE BY ID
     public void deleteById(int id, int authorId) {
@@ -98,8 +92,19 @@ public class DraftService {
         List<Draft> drafts = draftRepository.findByAuthorId(authorId);
 
         return drafts.stream()
-                .map(d -> new DraftResponseResume(d.getId(), d.getAuthorId(), d.getTitle()))
+                .map(d -> new DraftResponseResume(d))
                 .collect(Collectors.toList());
     }
 
+    public List<DraftResponse> findByAuthorIdAndTag_Name(int authorId, String name){
+    	
+    	List<Draft> drafts = draftRepository.findByAuthorIdAndTag_Name(authorId, name);
+    	return drafts.stream()
+                .map(d -> new DraftResponse())
+                .collect(Collectors.toList());    
+    	
+    }
+    
+    
+    
 }

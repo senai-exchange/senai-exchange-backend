@@ -45,7 +45,7 @@ public class DraftController {
     }
 
     // DELETE ALL BY AUTHOR
-    @DeleteMapping("delete/all/author")
+    @DeleteMapping("delete/all/{authorId}")
     public ResponseEntity<Void> deleteAllByAuthor(@RequestParam int authorId) {
         draftService.deleteAllByAuthor(authorId);
         return ResponseEntity.noContent().build();
@@ -78,4 +78,13 @@ public class DraftController {
         List<DraftResponseResume> drafts = draftService.findAllByAuthorId(authorId);
         return ResponseEntity.ok(drafts);
     }
+    
+    //LIST BY AUTHOR AND TAG
+    
+    @GetMapping("author/{authorId}/tag/{tagName}")
+    public ResponseEntity<List<DraftResponse>> findByAuthorIdAndTag_Name(@PathVariable int authorId, @PathVariable String name) {
+        List<DraftResponse> drafts = draftService.findByAuthorIdAndTag_Name(authorId, name);
+        return ResponseEntity.ok(drafts);
+    }
+    
 }

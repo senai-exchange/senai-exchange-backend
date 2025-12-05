@@ -2,6 +2,8 @@
 package com.senai.devs.senaiexchange.entity;
 
 import java.util.Set;
+
+import com.senai.devs.senaiexchange.dto.request.DraftRequest;
 import com.senai.devs.senaiexchange.entity.Tag;
 
 import jakarta.persistence.*;
@@ -22,6 +24,9 @@ public class Draft{
 	private String title;
 	private boolean is_autosave = false;
 	
+	@ManyToOne
+	private Tag tag;
+	
 	 @ManyToMany
 	    @JoinTable(
 	        name = "drafts_tags",
@@ -40,7 +45,15 @@ public class Draft{
 		this.title = title;
 		this.is_autosave = is_autosave;
 	}
-
+	
+	public Draft(DraftRequest request) {
+	    this.authorId = request.getAuthorId();
+	    this.title = request.getTitle();
+	    this.postId = request.getPostId();
+	    this.is_autosave = request.getIs_autosave();
+	    this.content_text = request.getContent_text(); 
+	}
+	
 	public int getId() {
 		return id;
 	}
