@@ -4,6 +4,7 @@ import com.senai.devs.senaiexchange.repository.UserRepository;
 import com.senai.devs.senaiexchange.entity.User;
 import com.senai.devs.senaiexchange.dto.response.UserSummaryResponse;
 import com.senai.devs.senaiexchange.dto.response.UserResponse;
+import com.senai.devs.senaiexchange.dto.request.UserRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,15 @@ public class UserService {
 				user.getDisplay_name(), user.getAvatar_url());
 		}
 		return Optional.of(userResponse);
+	}
+
+	// Create new user
+	public String signUp(UserRequest userRequest) {
+		User newUser = new User(userRequest.getUsername(),
+			userRequest.getDisplay_name(), userRequest.getAvatar_url());
+		userRepository.save(newUser);
+		return String.format("Usuário @%s criado com sucesso!",
+			newUser.getUsername());
 	}
 
 	// Delete user by username
