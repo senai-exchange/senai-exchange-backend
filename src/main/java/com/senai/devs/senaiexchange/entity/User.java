@@ -1,6 +1,6 @@
 package com.senai.devs.senaiexchange.entity;
 
-//import com.senai.devs.senaiexchange.entity.Post;
+import com.senai.devs.senaiexchange.entity.Post;
 //import com.senai.devs.senaiexchange.entity.Comment;
 //import com.senai.devs.senaiexchange.entity.Draft;
 import com.senai.devs.senaiexchange.entity.SearchHistory;
@@ -32,9 +32,9 @@ public class User {
 	private String avatar_url;
 
 	// Foreign keys
-//	@OneToMany(mappedBy = "user")
-//	private List<Post> posts = new ArrayList<>();
-//
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts = new ArrayList<>();
+
 //	@OneToMany(mappedBy = "user")
 //	private List<Comment> comments = new ArrayList<>();
 //

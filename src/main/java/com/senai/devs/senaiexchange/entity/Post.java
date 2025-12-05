@@ -1,14 +1,9 @@
 package com.senai.devs.senaiexchange.entity;
 
-import com.senai.devs.senaiexchange.dto.response.PostResponse;
 import jakarta.persistence.*;
-import org.apache.catalina.User;
-import org.aspectj.apache.bcel.generic.Tag;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -95,9 +90,7 @@ public class Post{
 
     public LocalDateTime getCreated_at() { return created_at; }
     public void setCreated_at(LocalDateTime created_at) { this.created_at = created_at; }
-
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
-    }
+    public Set<Tag> getTags() { return tags; }
+    public void setTags(Set<Tag> tags) { this.tags = tags; }
 
 }

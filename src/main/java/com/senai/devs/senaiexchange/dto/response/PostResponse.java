@@ -28,7 +28,7 @@ public class PostResponse {
         this.username = post.getUser().getUsername();
         this.title = post.getTitle();
         this.content = post.getContent();
-        this.status = post.isStatus();
+        this.status = post.getStatus();
         this.published_at = post.getPublished_at();
         this.created_at = post.getCreated_at();
 

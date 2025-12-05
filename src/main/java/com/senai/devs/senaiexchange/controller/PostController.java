@@ -1,16 +1,15 @@
 package com.senai.devs.senaiexchange.controller;
 
 import com.senai.devs.senaiexchange.dto.request.PostRequest;
+import com.senai.devs.senaiexchange.dto.request.PostTagRequest;
 import com.senai.devs.senaiexchange.dto.response.PostResponse;
-import com.senai.devs.senaiexchange.entity.Post;
-import com.senai.devs.senaiexchange.repository.PostRepository;
+import com.senai.devs.senaiexchange.dto.response.PostTagResponse;
 import com.senai.devs.senaiexchange.service.PostService;
+import com.senai.devs.senaiexchange.service.PostTagService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
 
@@ -18,10 +17,11 @@ import java.util.List;
 @RequestMapping("/posts")
 public class PostController {
 
-    private PostService postService;
-    private final PostTagRepository postTagRepository;
+    private final PostTagService postTagService;
+    private final PostService postService;
 
-    public PostController(PostService postService, PostTagService) {
+
+    public PostController(PostService postService, PostTagService postTagService) {
         this.postService = postService;
         this.postTagService = postTagService;
 

@@ -23,55 +23,53 @@ public class PostRequest {
     private LocalDateTime published_at;
 
     //lista de IDs de tags para associação
-    private Set<Integer> tag_ids;
+    private Set<Long> tag_ids;
 
-    // Getters
     public int getAuthor_id() {
         return author_id;
+    }
+
+    public void setAuthor_id(int author_id) {
+        this.author_id = author_id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public LocalDateTime getPublished_at() {
-        return published_at;
-    }
-
-    public Set<Integer> getTag_ids() {
-        return tag_ids;
-    }
-
-    // Setters
-    public void setAuthor_id(Integer author_id) {
-        this.author_id = author_id;
-    }
-
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getContent() {
+        return content;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
+    public Boolean getStatus() {
+        return status;
+    }
+
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public LocalDateTime getPublished_at() {
+        return published_at;
     }
 
     public void setPublished_at(LocalDateTime published_at) {
         this.published_at = published_at;
     }
 
-    public void setTag_ids(Set<Integer> tag_ids) {
+    public Set<Long> getTag_ids() {
+        return tag_ids;
+    }
+
+    public void setTag_ids(Set<Long> tag_ids) {
         this.tag_ids = tag_ids;
     }
 }
