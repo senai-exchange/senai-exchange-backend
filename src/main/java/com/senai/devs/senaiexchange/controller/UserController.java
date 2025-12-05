@@ -49,6 +49,12 @@ public class UserController {
 			body(userService.signUp(userRequest));
 	}
 
+	@PostMapping (value = "/signin")
+	public ResponseEntity<?> signIn(@RequestBody UserRequest userRequest) {
+		return ResponseEntity.status(HttpStatus.ACCEPTED).
+			body(userService.signIn(userRequest));
+	}
+
 	@DeleteMapping (value = "/delete/{username}")
 	public ResponseEntity<?> deleteUser(@PathVariable String username) {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).

@@ -54,6 +54,17 @@ public class UserService {
 			newUser.getUsername());
 	}
 
+	// Sign-in
+	public String signIn(UserRequest userRequest) {
+		User user = userRepository.findByUsername(userRequest.getUsername());
+		if (user != null) {
+			return String.format("Login efetuado com sucesso! Bem vindo(a) "
+				+ "@%s!", user.getUsername());
+		} else {
+			return "Usuário não encontrado!";
+		}
+	}
+
 	// Delete user by username
 	public String deleteUser(String username) {
 		User user = userRepository.findByUsername(username);
