@@ -31,7 +31,7 @@ public class PostService {
 
 
     public PostResponse create(PostRequest dto) {
-        User author = userRepository.findByUsernameOrId(dto.getAuthor_id());
+        User author = userRepository.findById(dto.getAuthor_id()).orElse(null);
         if (author == null) {
             throw new RuntimeException("Autor não encontrado");
         }
