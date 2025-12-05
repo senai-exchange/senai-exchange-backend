@@ -69,25 +69,4 @@ public class PostController {
         return ResponseEntity.notFound().build();
     }
 
-    // Associação Post ↔ Tag
-    @PostMapping(value = "/tags/add")
-    public ResponseEntity<?> addTagToPost(@RequestBody PostTagRequest dto) {
-        try {
-            PostTagResponse resp = postTagService.addTagToPost(dto);
-            return ResponseEntity.ok(resp);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping(value = "/tags/remove")
-    public ResponseEntity<?> removeTagFromPost(@RequestBody PostTagRequest dto) {
-        try {
-            PostTagResponse resp = postTagService.removeTagFromPost(dto);
-            return ResponseEntity.ok(resp);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
 }
