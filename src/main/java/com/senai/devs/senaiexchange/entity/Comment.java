@@ -1,6 +1,7 @@
 package com.senai.devs.senaiexchange.entity;
 
 import com.senai.devs.senaiexchange.entity.User;
+import com.senai.devs.senaiexchange.entity.Post;
 
 import java.time.LocalDateTime;
 
