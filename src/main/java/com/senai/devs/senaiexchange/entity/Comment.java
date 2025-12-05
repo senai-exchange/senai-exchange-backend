@@ -24,14 +24,16 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(nullable = false)
-	private int post_id;
 	@Column(nullable = false, columnDefinition = "TEXT")
 	private String content;
 	@Column(nullable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime created_at;
 
-	// Foreign key
+	// Foreign keys
+	@ManyToOne
+	@JoinColumn (name = "post_id")
+	private Post post;
+
 	@ManyToOne
 	@JoinColumn (name = "author_id")
 	@OnDelete (action = OnDeleteAction.SET_NULL)
@@ -41,19 +43,24 @@ public class Comment {
 	public Comment() {
 	}
 
-	public Comment(int post_id, String content, LocalDateTime created_at) {
-		this.post_id = post_id;
+	public Comment(Post post, User user, String content, LocalDateTime created_at) {
+		this.post = post;
+		this.user = user;
 		this.content = content;
 		this.created_at = created_at;
 	}
 
 	// Getters
-	public int getId() {
-		return id;
+	public Post getPost() {
+		return post;
 	}
 
-	public int getPost_id() {
-		return post_id;
+	public User getUser() {
+		return user;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getContent() {
@@ -65,12 +72,16 @@ public class Comment {
 	}
 
 	// Setters
-	public void setId(int id) {
-		this.id = id;
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void setContent(String content) {
