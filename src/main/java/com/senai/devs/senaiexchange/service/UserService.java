@@ -3,9 +3,11 @@ package com.senai.devs.senaiexchange.service;
 import com.senai.devs.senaiexchange.repository.UserRepository;
 import com.senai.devs.senaiexchange.entity.User;
 import com.senai.devs.senaiexchange.dto.response.UserSummaryResponse;
+import com.senai.devs.senaiexchange.dto.response.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -30,4 +32,16 @@ public class UserService {
 		}
 		return userSummaryList;
 	}
+
+	// List user by username
+	public Optional<UserResponse> listUserByUsername(String username) {
+		User user = userRepository.findByUsername(username);
+		UserResponse userResponse = new UserResponse();
+		if (user != null) {
+			userResponse = new UserResponse(user.getUsername(),
+				user.getDisplay_name(), user.getAvatar_url());
+		}
+		return Optional.of(userResponse);
+	}
+
 }

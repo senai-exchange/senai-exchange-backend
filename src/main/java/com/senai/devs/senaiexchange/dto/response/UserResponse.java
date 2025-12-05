@@ -8,6 +8,9 @@ public class UserResponse {
 	private String avatar_url;
 
 	// Constructor
+	public UserResponse() {
+	}
+
 	public UserResponse(String username, String display_name, String avatar_url) {
 		this.username = username;
 		this.display_name = display_name;

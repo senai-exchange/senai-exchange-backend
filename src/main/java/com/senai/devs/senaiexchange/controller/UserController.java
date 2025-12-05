@@ -2,12 +2,15 @@ package com.senai.devs.senaiexchange.controller;
 
 import com.senai.devs.senaiexchange.service.UserService;
 import com.senai.devs.senaiexchange.dto.response.UserSummaryResponse;
+import com.senai.devs.senaiexchange.dto.response.UserResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping ("/users")
@@ -26,4 +29,10 @@ public class UserController {
 	public List<UserSummaryResponse> listAllUsers() {
 		return userService.listAllUsers();
 	}
+
+	@GetMapping (value = "/{username}")
+	public Optional<UserResponse> listUserByUsername(@PathVariable String username) {
+		return userService.listUserByUsername(username);
+	}
+
 }
