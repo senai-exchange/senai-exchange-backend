@@ -43,4 +43,14 @@ public class CommentService {
 		}
 		return commentResponseList;
 	}
+
+	// Delete comment
+	public String deleteComment(int id) {
+		if (commentRepository.existsById(id)) {
+			commentRepository.deleteById(id);
+			return "Comentário excluído com sucesso!";
+		} else {
+			return "Comentário não encontrado!";
+		}
+	}
 }
