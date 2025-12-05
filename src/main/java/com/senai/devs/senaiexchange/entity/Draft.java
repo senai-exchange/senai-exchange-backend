@@ -1,6 +1,9 @@
 
 package com.senai.devs.senaiexchange.entity;
 
+import java.util.Set;
+import com.senai.devs.senaiexchange.entity.Tag;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +21,14 @@ public class Draft{
 	@Column(nullable = false, length = 200)
 	private String title;
 	private boolean is_autosave = false;
+	
+	 @ManyToMany
+	    @JoinTable(
+	        name = "drafts_tags",
+	        joinColumns = @JoinColumn(name = "draft_id"),
+	        inverseJoinColumns = @JoinColumn(name = "tag_id")
+	    )
+	    private Set<Tag> tags;
 	
 	public Draft() {
 	}
