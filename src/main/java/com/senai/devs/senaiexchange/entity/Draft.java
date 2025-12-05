@@ -9,9 +9,10 @@ public class Draft{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private int post_id;
-	@Column(nullable = false)
-	private int author_id;
+	@Column(name ="post_id", nullable = false)
+	private int postId;
+	@Column(name ="author_id", nullable = false)
+	private int authorId;
 	@Column(columnDefinition = "TEXT", nullable = false)
 	private String content_text;
 	@Column(nullable = false, length = 200)
@@ -21,9 +22,9 @@ public class Draft{
 	public Draft() {
 	}
 
-	public Draft(int post_id, int author_id, String content_text, String title, boolean is_autosave) {
-		this.post_id = post_id;
-		this.author_id = author_id;
+	public Draft(int postId, int authorId, String content_text, String title, boolean is_autosave) {
+		this.postId = postId;
+		this.authorId = authorId;
 		this.content_text = content_text;
 		this.title = title;
 		this.is_autosave = is_autosave;
@@ -37,21 +38,22 @@ public class Draft{
 		this.id = id;
 	}
 
-	public int getPost_id() {
-		return post_id;
+	public int getPostId() {
+		return postId;
 	}
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
 
-	public int getAuthor_id() {
-		return author_id;
+	public int getAuthorId() {
+		return authorId;
 	}
 
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
 	}
+
 
 	public String getContent_text() {
 		return content_text;
@@ -69,7 +71,7 @@ public class Draft{
 		this.title = title;
 	}
 
-	public boolean isIs_autosave() {
+	public boolean getIs_autosave() {
 		return is_autosave;
 	}
 

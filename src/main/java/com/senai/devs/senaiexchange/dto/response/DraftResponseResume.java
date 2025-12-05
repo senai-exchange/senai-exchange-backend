@@ -1,49 +1,45 @@
 package com.senai.devs.senaiexchange.dto.response;
 
+
 public class DraftResponseResume {
-	
-	private int post_id;
-	private int author_id;
-	private String title;
 
-	public DraftResponseResume() {
-	}
+    private int id;
+    private int authorId;
+    private String title;
 
-	public DraftResponseResume(int post_id, int author_id,String title) {
-		this.post_id = post_id;
-		this.author_id = author_id;
-		this.title = title;
-	}
+    public DraftResponseResume(int id, int authorId, String title) {
+        this.id = id;
+        this.authorId = authorId;
+        this.title = title;
+    }
 
-	public int getPost_id() {
-		return post_id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public int getAuthor_id() {
-		return author_id;
-	}
+    public int getAuthorId() {
+        return authorId;
+    }
 
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
-	}
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
 
+    public String getTitle() {
+        return title;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	
-	
 }
-	
-	
-	
+
+
 	
 
+	

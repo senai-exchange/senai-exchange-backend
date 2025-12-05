@@ -1,10 +1,13 @@
 
 package com.senai.devs.senaiexchange.dto.response;
 
+import com.senai.devs.senaiexchange.entity.Draft;
+
 public class DraftResponse{
 	
-	private int post_id;
-	private int author_id;
+	private int id;
+	private int postId;
+	private int authorId;
 	private String content_text;
 	private String title;
 	private boolean is_autosave = false;
@@ -12,29 +15,40 @@ public class DraftResponse{
 	public DraftResponse() {
 	}
 
-	public DraftResponse(int post_id, int author_id,String content_text,String title, boolean is_autosave) {
-		this.post_id = post_id;
-		this.author_id = author_id;
-		this.content_text = content_text;
-		this.title = title;
-		this.is_autosave = is_autosave;
+	public DraftResponse(Draft draft) {
+		this.id = draft.getId();
+		this.postId = draft.getPostId();
+		this.authorId = draft.getAuthorId();
+		this.content_text = draft.getContent_text();
+		this.title = draft.getTitle();
+		this.is_autosave = draft.getIs_autosave();
 	}
 
-	public int getPost_id() {
-		return post_id;
+
+	public int getId() {
+		return id;
 	}
 
-	public void setPost_id(int post_id) {
-		this.post_id = post_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getAuthor_id() {
-		return author_id;
+	public int getPostId() {
+		return postId;
 	}
 
-	public void setAuthor_id(int author_id) {
-		this.author_id = author_id;
+	public void setPostId(int postId) {
+		this.postId = postId;
 	}
+
+	public int getAuthorId() {
+		return authorId;
+	}
+
+	public void setAuthorId(int authorId) {
+		this.authorId = authorId;
+	}
+
 
 	public String getContent_text() {
 		return content_text;
@@ -52,17 +66,13 @@ public class DraftResponse{
 		this.title = title;
 	}
 
-	public boolean isIs_autosave() {
+	public boolean getIs_autosave() {
 		return is_autosave;
 	}
 
 	public void setIs_autosave(boolean is_autosave) {
 		this.is_autosave = is_autosave;
 	}
-	
-	
-	
-
 	
 	
 	
