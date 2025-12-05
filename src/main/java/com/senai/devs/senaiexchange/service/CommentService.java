@@ -30,4 +30,17 @@ public class CommentService {
 		}
 		return commentResponseList;
 	}
+
+	// List user comments
+	public List<CommentResponse> listUserComments(String username) {
+		List<Comment> commentList = commentRepository.findAll();
+		List<CommentResponse> commentResponseList = new ArrayList<>();
+
+		for (Comment comment : commentList) {
+			if (comment.getUser().getUsername().equals(username)) {
+				commentResponseList.add(new CommentResponse(comment));
+			}
+		}
+		return commentResponseList;
+	}
 }

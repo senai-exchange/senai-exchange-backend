@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping (value = "/comments")
@@ -25,5 +26,10 @@ public class CommentController {
 	@GetMapping (value = "/all")
 	public List<CommentResponse> listAllComments() {
 		return commentService.listAllComments();
+	}
+
+	@GetMapping (value = "/user/{username}")
+	public List<CommentResponse> listUserComments(@PathVariable String username) {
+		return commentService.listUserComments(username);
 	}
 }
