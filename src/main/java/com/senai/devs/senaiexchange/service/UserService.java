@@ -65,6 +65,20 @@ public class UserService {
 		}
 	}
 
+	// Update user information
+	public String updateUser(String username, UserRequest updatedUser) {
+		User user = userRepository.findByUsername(username);
+
+		if (user != null) {
+			user.setDisplay_name(updatedUser.getDisplay_name());
+			user.setAvatar_url(updatedUser.getAvatar_url());
+			userRepository.save(user);
+			return "Usuário atualizado!";
+		} else {
+			return "Usuário não encontrado!";
+		}
+	}
+
 	// Delete user by username
 	public String deleteUser(String username) {
 		User user = userRepository.findByUsername(username);
