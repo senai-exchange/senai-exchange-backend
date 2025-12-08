@@ -35,36 +35,32 @@ public class UserController {
 
 	// Endpoints
 	@GetMapping (value = "/all")
-	public List<UserSummaryResponse> listAllUsers() {
-		return userService.listAllUsers();
+	public ResponseEntity<?> listAllUsers() {
+		return ResponseEntity.ok(userService.listAllUsers());
 	}
 
 	@GetMapping (value = "/find/{username}")
-	public Optional<UserResponse> listUserByUsername(@PathVariable String username) {
-		return userService.listUserByUsername(username);
+	public ResponseEntity<?> listUserByUsername(@PathVariable String username) {
+		return ResponseEntity.ok(userService.listUserByUsername(username));
 	}
 
 	@PostMapping (value = "/signup")
 	public ResponseEntity<?> signUp(@Valid @RequestBody UserRequest userRequest) {
-		return ResponseEntity.status(HttpStatus.ACCEPTED).
-			body(userService.signUp(userRequest));
+		return ResponseEntity.ok(userService.signUp(userRequest));
 	}
 
 	@PostMapping (value = "/signin")
 	public ResponseEntity<?> signIn(@RequestBody UserRequest userRequest) {
-		return ResponseEntity.status(HttpStatus.ACCEPTED).
-			body(userService.signIn(userRequest));
+		return ResponseEntity.ok(userService.signIn(userRequest));
 	}
 
 	@PutMapping (value = "/update/{username}")
 	public ResponseEntity<?> updateUser(@PathVariable String username, @RequestBody UserRequest updatedUser) {
-		return ResponseEntity.status(HttpStatus.ACCEPTED).
-			body(userService.updateUser(username, updatedUser));
+		return ResponseEntity.ok(userService.updateUser(username, updatedUser));
 	}
 
 	@DeleteMapping (value = "/delete/{username}")
 	public ResponseEntity<?> deleteUser(@PathVariable String username) {
-		return ResponseEntity.status(HttpStatus.ACCEPTED).
-			body(userService.deleteUser(username));
+		return ResponseEntity.ok(userService.deleteUser(username));
 	}
 }
