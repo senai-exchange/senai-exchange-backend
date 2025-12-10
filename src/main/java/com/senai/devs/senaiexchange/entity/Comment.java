@@ -1,8 +1,5 @@
 package com.senai.devs.senaiexchange.entity;
 
-import com.senai.devs.senaiexchange.entity.User;
-import com.senai.devs.senaiexchange.entity.Post;
-
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
@@ -48,7 +45,7 @@ public class Comment {
 		this.post = post;
 		this.user = user;
 		this.content = content;
-		this.created_at = created_at;
+		this.created_at = LocalDateTime.now();
 	}
 
 	// Getters

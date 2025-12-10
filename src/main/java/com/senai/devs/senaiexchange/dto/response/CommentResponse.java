@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 public class CommentResponse {
 
 	// Attributes
+	private int id;
 	private String username;
 	private int post_id;
 	private int author_id;
@@ -18,6 +19,7 @@ public class CommentResponse {
 	}
 
 	public CommentResponse(Comment comment) {
+		this.id = comment.getId();
 		this.username = comment.getUser().getUsername();
 		this.post_id = comment.getPost().getId();
 		this.author_id = comment.getUser().getId();
@@ -26,6 +28,10 @@ public class CommentResponse {
 	}
 
 	// Getters
+	public int getId() {
+		return id;
+	}
+
 	public String getUsername() {
 		return username;
 	}
