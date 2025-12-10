@@ -26,7 +26,7 @@ public class CommentService {
 
 	// Constructor
 	public CommentService(CommentRepository commentRepository,
-						  UserRepository userRepository, PostRepository postRepository) {
+		UserRepository userRepository, PostRepository postRepository) {
 		this.commentRepository = commentRepository;
 		this.userRepository = userRepository;
 		this.postRepository = postRepository;
@@ -65,7 +65,7 @@ public class CommentService {
 		User user = userOptional.get();
 
 		Comment newComment = new Comment(post, user,
-				commentRequest.getContent(), LocalDateTime.now());
+			commentRequest.getContent(), LocalDateTime.now());
 		commentRepository.save(newComment);
 		return "Comentário publicado com sucesso!";
 	}
