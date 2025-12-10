@@ -1,10 +1,5 @@
 package com.senai.devs.senaiexchange.entity;
 
-import com.senai.devs.senaiexchange.entity.Post;
-import com.senai.devs.senaiexchange.entity.Comment;
-import com.senai.devs.senaiexchange.entity.Draft;
-import com.senai.devs.senaiexchange.entity.SearchHistory;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -38,8 +33,8 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Comment> comments = new ArrayList<>();
 
-	@OneToMany(mappedBy = "user")
-	private List<Draft> drafts = new ArrayList<>();
+//	@OneToMany(mappedBy = "user")
+//	private List<Draft> drafts = new ArrayList<>();
 
 	@OneToMany(mappedBy = "user")
 	private List<SearchHistory> searchHistory = new ArrayList<>();
@@ -87,4 +82,5 @@ public class User {
 	public void setAvatar_url(String avatar_url) {
 		this.avatar_url = avatar_url;
 	}
+
 }
